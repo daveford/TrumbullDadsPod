@@ -1,0 +1,27 @@
+{
+  "name": "gatsby-theme-sky-lite-starter",
+  "version": "1.4.1",
+  "main": "index.js",
+  "author": "Ryan Bell <ryanbell@gmail.com> (@iRyanBell)",
+  "license": "MIT",
+  "scripts": {
+    "start": "gatsby develop",
+    "build": "gatsby build",
+    "clean": "gatsby clean"
+  },
+  "dependencies": {
+    "gatsby": "^2.23.22",
+    "gatsby-plugin-manifest": "^2.4.17",
+    "gatsby-theme-sky-lite": "1.4.1",
+    "react-dom": "^16.13.1",
+    "styled-components": "^5.1.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vim-labs/gatsby-theme-sky-lite-starter.git"
+  },
+  "bugs": {
+    "url": "https://github.com/vim-labs/gatsby-theme-sky-lite-starter/issues"
+  },
+  "homepage": "https://github.com/vim-labs/gatsby-theme-sky-lite-starter#readme"
+}
