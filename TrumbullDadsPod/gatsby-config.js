@@ -9,8 +9,12 @@ module.exports = {
         "link": "/"
       },
       {
-        "name": "page2",
-        "link": "/page-2"
+        "name": "episodes",
+        "link": "/episodes"
+      },
+      {
+        "name": "about us",
+        "link": "/about-us"
       }
     ]
   },
@@ -39,6 +43,14 @@ module.exports = {
       },
     },
     `gatsby-plugin-gatsby-cloud`,
+    `gatsby-plugin-sass`,
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `markdown-pages`,
+        path: `${__dirname}/src/markdown-pages`,
+      },
+    },
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
     // `gatsby-plugin-offline`,
