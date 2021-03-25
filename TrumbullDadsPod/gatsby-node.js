@@ -106,6 +106,8 @@ exports.createSchemaCustomization = ({ actions }) => {
       title: String
       description: String
       date: Date @dateformat
+      spotifyId: String
+      author: String
     }
 
     type Fields {

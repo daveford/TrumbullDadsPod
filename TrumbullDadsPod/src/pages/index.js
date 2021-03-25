@@ -14,12 +14,21 @@ const IndexPage = ({ data }) => {
       <SEO title="Home" />
       <h1>Trumbull Dads Podcast</h1>
       <p>Dads from Connecticut talking NFL, NCAA football, and their kids playing soccer. </p>
-      <ol style={{ listStyle: `none` }}>
+      <ol style={{ listStyle: `none`,
+                   display: `flex`,
+                   alignItems: `stretch`,
+                   justifyContent: `space-between`,
+                   width: `100%`,
+                   margin: `0`
+                  }}>
         {posts.map(post => {
           console.log(post);
           const title = post.frontmatter.title || post.fields.slug;
           return (
-            <li key={post.fields.slug}>
+            <li key={post.fields.slug} style={{
+              display: `block`,
+              flex: `1`
+            }}>
               <Link to={post.fields.slug} itemProp="url">
                 <span itemProp="headline">{title}</span>
                 <StaticImage

@@ -1,8 +1,9 @@
 ---
-title: Hello World
-date: "2015-05-01T22:12:03.284Z"
-description: "Hello World"
+title: 30 - Super Bowl recap, MLB Spring Training, MLB Fan stories
+date: "2021-02-20"
+description: "Nate, Brian, and Rob are the Trumbull Dads"
 author: "Trumbull Dads Podcast"
+spotifyId: "1AZILUE4bmiXAPvBFQXxsb"
 ---
 
 Here is some text
