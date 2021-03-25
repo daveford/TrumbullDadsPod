@@ -6,25 +6,38 @@ import { graphql } from "gatsby"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 
-const IndexPage = () => (
-  <Layout>
-    <SEO title="Home" />
-    <h1>Trumbull Dads Podcast</h1>
-    <p>Dads from Connecticut talking NFL, NCAA football, and their kids playing soccer. </p>
-    <StaticImage
-      src="../images/gatsby-astronaut.png"
-      width={300}
-      quality={95}
-      formats={["AUTO", "WEBP", "AVIF"]}
-      alt="A Gatsby astronaut"
-      style={{ marginBottom: `1.45rem` }}
-    />
-    <p>
-      <Link to="/episodes/">Episodes</Link> <br />
-      <Link to="/using-typescript/">Go to "Using TypeScript"</Link>
-    </p>
-  </Layout>
-)
+const IndexPage = ({ data }) => {
+  const posts = data.allMarkdownRemark.nodes;
+  
+  return (
+    <Layout>
+      <SEO title="Home" />
+      <h1>Trumbull Dads Podcast</h1>
+      <p>Dads from Connecticut talking NFL, NCAA football, and their kids playing soccer. </p>
+      <ol style={{ listStyle: `none` }}>
+        {posts.map(post => {
+          console.log(post);
+          const title = post.frontmatter.title || post.fields.slug;
+          return (
+            <li key={post.fields.slug}>
+              <Link to={post.fields.slug} itemProp="url">
+                <span itemProp="headline">{title}</span>
+                <StaticImage
+                  src="../images/trumbull-dads-pod-logo.jpg"
+                  width={300}
+                  quality={95}
+                  formats={["AUTO", "WEBP", "AVIF"]}
+                  alt="Trumbull Dads Podcast"
+                  style={{ marginBottom: `1.45rem` }}
+                />
+              </Link>
+            </li>
+          )
+        })}
+      </ol>
+    </Layout>
+  )
+}
 
 export default IndexPage
 
@@ -35,7 +48,7 @@ export const pageQuery = graphql`
         title
       }
     }
-    allMarkdownRemark(sort: { fields: [frontmatter___date], order: DESC }) {
+    allMarkdownRemark(sort: {fields: [frontmatter___date], order: DESC}, limit: 3) {
       nodes {
         excerpt
         fields {
