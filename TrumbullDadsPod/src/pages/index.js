@@ -2,11 +2,26 @@ import * as React from "react"
 import { Link } from "gatsby"
 import { StaticImage } from "gatsby-plugin-image"
 import { graphql } from "gatsby"
+import Grid from '@material-ui/core/Grid';
+import { makeStyles } from '@material-ui/core/styles';
+import "../styles/home.scss"
 
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 
+const useStyles = makeStyles((theme) => ({
+  root: {
+    flexGrow: 1,
+  },
+  paper: {
+    padding: theme.spacing(2),
+    textAlign: 'center',
+    color: theme.palette.text.secondary,
+  },
+}));
+
 const IndexPage = ({ data }) => {
+  const classes = useStyles();
   const posts = data.allMarkdownRemark.nodes;
   
   return (
@@ -14,36 +29,29 @@ const IndexPage = ({ data }) => {
       <SEO title="Home" />
       <h1>Trumbull Dads Podcast</h1>
       <p>Dads from Connecticut talking NFL, NCAA football, and their kids playing soccer. </p>
-      <ol style={{ listStyle: `none`,
-                   display: `flex`,
-                   alignItems: `stretch`,
-                   justifyContent: `space-between`,
-                   width: `100%`,
-                   margin: `0`
-                  }}>
-        {posts.map(post => {
-          console.log(post);
-          const title = post.frontmatter.title || post.fields.slug;
-          return (
-            <li key={post.fields.slug} style={{
-              display: `block`,
-              flex: `1`
-            }}>
-              <Link to={post.fields.slug} itemProp="url">
-                <span itemProp="headline">{title}</span>
-                <StaticImage
-                  src="../images/trumbull-dads-pod-logo.jpg"
-                  width={300}
-                  quality={95}
-                  formats={["AUTO", "WEBP", "AVIF"]}
-                  alt="Trumbull Dads Podcast"
-                  style={{ marginBottom: `1.45rem` }}
-                />
-              </Link>
-            </li>
-          )
-        })}
-      </ol>
+      <div className={classes.root}>
+        <Grid container spacing={3}>
+          {posts.map(post => {
+            console.log(post);
+            const title = post.frontmatter.title || post.fields.slug;
+            return (
+              <Grid item xs={12} sm={6} md={4} key={post.fields.slug}>
+                <Link to={post.fields.slug} itemProp="url">
+                  <p itemProp="headline">{title}</p>
+                  <StaticImage
+                    src="../images/trumbull-dads-pod-logo.jpg"
+                    width={300}
+                    quality={95}
+                    formats={["AUTO", "WEBP", "AVIF"]}
+                    alt="Trumbull Dads Podcast"
+                    style={{ marginBottom: `1.45rem`, marginLeft: `auto`, marginRight: `auto` }}
+                  />
+                </Link>
+              </Grid>
+            )
+          })}
+        </Grid>
+      </div>
     </Layout>
   )
 }
