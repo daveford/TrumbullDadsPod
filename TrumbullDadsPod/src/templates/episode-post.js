@@ -9,6 +9,7 @@ const EpisodePostTemplate = ({ data, location }) => {
   const post = data.markdownRemark
   const siteTitle = data.site.siteMetadata?.title || `Title`
   const { previous, next } = data
+  const iframeSrc = "https://open.spotify.com/embed-podcast/episode/"+ post.frontmatter.spotifyId;
 
   return (
     <Layout location={location} title={siteTitle}>
@@ -25,10 +26,13 @@ const EpisodePostTemplate = ({ data, location }) => {
           <h1 itemProp="headline">{post.frontmatter.title}</h1>
           <p>{post.frontmatter.date}</p>
         </header>
-        <section
-          dangerouslySetInnerHTML={{ __html: post.html }}
-          itemProp="articleBody"
-        />
+        <section itemProp="articleBody">
+            <p>{post.frontmatter.description}</p>
+            <iframe src={iframeSrc} width="100%" height="232" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+        </section>
+        <section>
+            
+        </section>
         <hr />
         <footer>
           {/* <Bio /> */}
