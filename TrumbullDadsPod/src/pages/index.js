@@ -32,7 +32,6 @@ const IndexPage = ({ data }) => {
       <div className={classes.root}>
         <Grid container spacing={3}>
           {posts.map(post => {
-            console.log(post);
             const title = post.frontmatter.title || post.fields.slug;
             return (
               <Grid item xs={12} sm={6} md={4} key={post.fields.slug}>
