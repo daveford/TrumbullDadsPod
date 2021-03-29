@@ -52,12 +52,16 @@ module.exports = {
     `gatsby-plugin-gatsby-cloud`,
     `gatsby-plugin-sass`,
     {
-      resolve: `gatsby-plugin-google-analytics`,
+      resolve: `gatsby-plugin-google-gtag`,
       options: {
         // The property ID; the tracking code won't be generated without it
-        trackingId: "265187897",
-        // Defines where to place the tracking script - `true` in the head and `false` in the body
-        head: true
+        trackingIds: [
+          "G-H80SVBHJJD", // Google Analytics / GA
+        ],
+        pluginConfig: {
+          // Defines where to place the tracking script - `true` in the head and `false` in the body
+          head: true
+        }
       },
     },
     {
