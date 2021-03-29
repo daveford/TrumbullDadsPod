@@ -43,8 +43,8 @@ module.exports = {
         name: `Trumbull-Dads-Podcast`,
         short_name: `Trumbull Dads Pod`,
         start_url: `/`,
-        background_color: `#663399`,
-        theme_color: `#663399`,
+        background_color: `#fff`,
+        theme_color: `#000`,
         display: `minimal-ui`,
         icon: `src/images/favicon.png`,
       },
@@ -55,7 +55,7 @@ module.exports = {
       resolve: `gatsby-plugin-google-analytics`,
       options: {
         // The property ID; the tracking code won't be generated without it
-        trackingId: "G-H80SVBHJJD",
+        trackingId: "265187897",
         // Defines where to place the tracking script - `true` in the head and `false` in the body
         head: true
       },
