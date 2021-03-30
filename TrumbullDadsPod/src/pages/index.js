@@ -44,24 +44,24 @@ const IndexPage = ({ data }) => {
 export default IndexPage
 
 export const pageQuery = graphql`
-  query {
-    site {
-      siteMetadata {
-        title
-      }
+{
+  site {
+    siteMetadata {
+      title
     }
-    allMarkdownRemark(sort: {fields: [frontmatter___date], order: DESC}, limit: 3) {
-      nodes {
-        excerpt
-        fields {
-          slug
-        }
-        frontmatter {
-          date(formatString: "MMMM DD, YYYY")
-          title
-          description
-        }
+  }
+  allMarkdownRemark(sort: {fields: [frontmatter___date], order: DESC}, limit: 3, filter: {fileAbsolutePath: {regex: "/(episodes)/"}}) {
+    nodes {
+      excerpt
+      fields {
+        slug
+      }
+      frontmatter {
+        date(formatString: "MMMM DD, YYYY")
+        title
+        description
       }
     }
   }
+}
 `
